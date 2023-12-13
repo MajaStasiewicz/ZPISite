@@ -1,0 +1,122 @@
+﻿{% extends 'navbar.html' %}
+{% load static %}
+
+
+{% block content %}
+<head>
+    <title>Koszyk</title>
+    <link rel="stylesheet" href="{%static 'sklep.css'%}">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js"></script>
+</head>
+
+
+    
+        
+        <h1 id="title">Koszyk</h1>
+        
+        <div id="cartwindow">
+            <form method="POST">
+
+                <div id="slidertable">
+                    <table id="carttable">
+                        <tr>
+                            <th>Produkt</th>
+                            <th>Ilość</th>
+                            <th>Kolor</th>
+                            <th>Wzrost [cm]</th>
+                            <th>Układ</th>
+                            <th>Dozownik na wodę</th>
+                            <th>Niszczarka</th>
+                            <th>Szuflada</th>
+                            <th>Rozmiar [cm]</th>
+                            <th>Cena</th>
+
+                        </tr>
+                        {% csrf_token %}
+                        {% for product in products %}
+                        <tr>
+                            <td>Smart biurko</td>
+                            <td>{{ product.quantity }}</td>
+                            <td>{{ product.product.color }}</td>
+                            <td>{{ product.height }}</td>
+                            <td>
+                                {% if product.hand == 'PRAWORECZNY' %}
+                                Praworęczny
+                                {% elif product.hand == 'LEWORECZNY' %}
+                                Leworęczny
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if product.water == 'BEZ DOZOWNIKA' %}
+                                Nie
+                                {% elif product.water == 'DOZOWNIK' %}
+                                Tak
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if product.shredder == 'NISZCZARKA' %}
+                                Tak
+                                {% elif product.shredder == 'BEZ NISZCZARKI' %}
+                                Nie
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if product.drawer == 'BEZ SZUFLADY' %}
+                                Nie
+                                {% elif product.drawer == 'SZUFLADA' %}
+                                Tak
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if product.size == '180x60' %}
+                                140x65
+                                {% elif product.size == '190x70' %}
+                                160x71
+                                {% elif product.size == '200x80' %}
+                                180x80
+                                {% endif %}
+                            </td>
+                            <td>{{ product.price }}</td>
+                            <td id="delete">
+
+                                <button class="cta" type="submit" id="model" value="{{ product.pk }}" name="delete_product">
+                                    <span>Usuń</span>
+
+                                </button>
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <br>
+
+            </form>
+            <p id="price">Cena za wszystko: {{ total }}</p>
+            <br>
+            <form action="/product/">
+                <button class="cta" type="submit" id="back">
+                    <span>Powrót do produktów</span>
+                    <svg viewBox="0 0 13 10" height="10px" width="15px">
+                        <path d="M1,5 L11,5"></path>
+                        <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                </button>
+            </form>
+            <form action="/order/">
+                <button class="cta" type="submit" id="next">
+                    <span>Złóż zamówienie</span>
+                    <svg viewBox="0 0 13 10" height="10px" width="15px">
+                        <path d="M1,5 L11,5"></path>
+                        <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                </button>
+            </form>
+
+        </div>
+
+
+
+
+{% endblock %}
+

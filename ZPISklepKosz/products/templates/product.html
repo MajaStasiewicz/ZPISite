@@ -1,0 +1,275 @@
+{% extends 'navbar.html' %}
+{% load static %}
+
+
+{% block content %}
+<head>
+    <title>Produkt</title>
+    <link rel="stylesheet" href="{%static 'sklep.css'%}">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js"></script>
+</head>
+<div class="container">
+     {% if messages %}
+         {% for message in messages %}
+         <div class="custom-alert">
+             {{message}}
+             <button class="close-button" aria-label="Close">×</button>
+         </div>
+         {% endfor %}
+     {% endif %}
+</div>
+
+
+
+<div class="product-info">
+    <h1 id="szczegoly">Smart biurko</h1>
+
+    <div id="slider2">
+        <input type="radio" name="slider" id="slide1" checked>
+        <input type="radio" name="slider" id="slide2">
+        <input type="radio" name="slider" id="slide3">
+        <input type="radio" name="slider" id="slide4">
+        <input type="radio" name="slider" id="slide5">
+        <input type="radio" name="slider" id="slide6">
+        <input type="radio" name="slider" id="slide7">
+        <div id="slides">
+            <div id="overflow">
+                <div class="inner">
+                    <div class="slide slide_12">
+                        <div class="slide-content">
+                            <div class="pic"><img src="{%static 'B1.png'%}" class="bpic" /></div>
+
+                        </div>
+                    </div>
+
+                    <div class="slide slide_22">
+                        <div class="slide-content">
+                            <div class="pic"><img src="{%static 'B2.png'%}" class="bpic" /></div>
+
+                        </div>
+                    </div>
+
+                    <div class="slide slide_32">
+                        <div class="slide-content">
+                            <div class="pic"><img src="{%static 'B3.png'%}" class="bpic" /></div>
+
+                        </div>
+                    </div>
+
+                    <div class="slide slide_42">
+                        <div class="slide-content">
+                            <div class="pic"><img src="{%static 'B4.png'%}" class="bpic" /></div>
+
+                        </div>
+                    </div>
+
+                    <div class="slide slide_52">
+                        <div class="slide-content">
+                            <div class="pic"><img src="{%static 'B5.png'%}" class="bpic" /></div>
+
+                        </div>
+                    </div>
+
+                    <div class="slide slide_62">
+                        <div class="slide-content">
+                            <div class="pic"><img src="{%static 'B6.png'%}" class="bpic" /></div>
+
+                        </div>
+                    </div>
+
+                    <div class="slide slide_72">
+                        <div class="slide-content">
+                            <div class="pic"><img src="{%static 'B1.png'%}" class="bpic" /></div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="controls">
+            <label for="slide1"></label>
+            <label for="slide2"></label>
+            <label for="slide3"></label>
+            <label for="slide4"></label>
+            <label for="slide5"></label>
+            <label for="slide6"></label>
+            <label for="slide7"></label>
+        </div>
+        <div id="bullets">
+            <label for="slide1"></label>
+            <label for="slide2"></label>
+            <label for="slide3"></label>
+            <label for="slide4"></label>
+            <label for="slide5"></label>
+            <label for="slide6"></label>
+            <label for="slide7"></label>
+        </div>
+    </div>
+    <form action="/model/" target="_blank">
+        <button class="cta" type="submit" id="model">
+            <span>Zobacz model 3D!</span>
+            <svg viewBox="0 0 13 10" height="10px" width="15px">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+        </button>
+    </form>
+    <p id="tekst">
+        Zalety biurka: <br />
+        •	Czujnik informujący o tym, czy odległość oczu użytkownika od ekranu jest odpowiednia<br />
+        •	Oświetlenie włączane automatycznie kiedy zrobi się ciemno w pokoju. Możliwość włączenia/wyłączenia światła za pomocą sygnału dźwiękowego (np. Klaśnięcie)<br />
+        •	Stoper pokazujący za ile minut czeka nas przerwa na zmianę pozycji oraz uzupełnienie płynów<br />
+        •	Powiadomienia dźwiękowe, aby w szybki i prosty sposób powiadomić użytkującego o potrzebie uzupełnieniu płynów czy zmiany pozycji.<br />
+        •	Dozownik z wodą, który zapewnia nawodnienie w chwilach, kiedy nie możemy odejść od biurka ze względu na natłok spotkań lub pracy.<br />
+        •	Gniazdka typu USB (podać rodzaj USB) oraz gniazdka elektryczne z zabezpieczeniem przeciwprzepięciowym.<br />
+        •	Sensory biurka połączone z aplikacją, za pomocą której użytkownik może kontrolować dane<br />
+        •	Półka na telefon oraz inne przybory (pozwala mieć telefon przy sobie a zarazem blokuje widok telefonu co ma wpływ na chęć sięgnięcia po niego)<br />
+        •	Ładowarka indukcyjna<br />
+        •	Korytko na kable – miejsce na stację dokującą, która pomaga w zachowaniu porządku z kablami<br />
+        •	Uchwyt na słuchawki<br />
+        •	Haczyk na plecak/torbę<br />
+    </p>
+</div>
+
+    <div class="opis1">
+        <h1 id="szczegoly">Dostosuj produkt</h1>
+        <form method="post" id="myForm">
+            {% csrf_token %}
+
+            <fieldset id="color">
+                <legend><b>&nbspKolor&nbsp</b></legend>
+                <input id="c1" type="radio" value="BIAŁY" name="option1" required checked="checked">
+                <label for="c1" class="lbl">Biały</label><br>
+                <input id="c2" type="radio" value="CZARNY" name="option1">
+                <label for="c2" class="lbl">Czarny</label><br>
+                <input id="c3" type="radio" value="BRĄZOWY" name="option1">
+                <label for="c3" class="lbl">Brązowy</label><br>
+            </fieldset>
+
+            <fieldset id="water">
+                <legend><b>&nbspDozownik wody do picia&nbsp</b></legend>
+                <input id="w1" type="radio" value="BEZ DOZOWNIKA" name="option2" required checked="checked">
+                <label for="w1" class="lbl">Bez dozownika na wodę</label><br>
+                <input id="w2" type="radio" value="DOZOWNIK" name="option2">
+                <label for="w2" class="lbl">Z dozownikiem na wodę</label><br>
+
+            </fieldset>
+
+            <fieldset id="shredder">
+                <legend><b>&nbspNiszczarka&nbsp</b></legend>
+                <input id="s1" type="radio" value="BEZ NISZCZARKI" name="option3" required checked="checked">
+                <label for="s1" class="lbl">Bez niszczarki</label><br>
+                <input id="s2" type="radio" value="NISZCZARKA" name="option3">
+                <label for="s2" class="lbl">Z niszczarką</label><br>
+
+            </fieldset>
+
+            <fieldset id="hand">
+                <legend><b>&nbspPraworęczność leworęczność&nbsp</b></legend>
+                <input id="h1" type="radio" value="PRAWORECZNY" name="option4" required checked="checked">
+                <label for="h1" class="lbl">Praworęczny</label><br>
+                <input id="h2" type="radio" value="LEWORECZNY" name="option4">
+                <label for="h2" class="lbl">Leworęczny</label><br>
+            </fieldset>
+
+            <fieldset id="size">
+                <legend><b>&nbspRozmiar&nbsp</b></legend>
+                <input id="r1" type="radio" value="180x60" name="option5" required checked="checked">
+                <label for="r1" class="lbl">140x65 cm</label><br>
+                <input id="r2" type="radio" value="190x70" name="option5">
+                <label for="r2" class="lbl">160x71 cm</label><br>
+                <input id="r3" type="radio" value="200x80" name="option5">
+                <label for="r3" class="lbl">180x80 cm</label><br>
+            </fieldset>
+
+            <fieldset id="drawer">
+                <legend><b>&nbspSzuflada&nbsp</b></legend>
+                <input id="d1" type="radio" value="BEZ SZUFLADY" name="option6" required checked="checked">
+                <label for="d1" class="lbl">Bez szuflady</label><br>
+                <input id="d2" type="radio" value="SZUFLADA" name="option6">
+                <label for="d2" class="lbl">Szuflada na mysz i klawiaturę</label><br>
+
+            </fieldset>
+
+            <fieldset id="high">
+                <legend><b>&nbspPodaj swój wzrost:&nbsp</b></legend>
+                <input type="number" name="wzrost" required class="pola"> cm <br /><br />
+            </fieldset>
+            
+            <p id="price" name="productPrice" value="{{ product.price }}">Cena: {{ product.price }} zł</p>
+            <input id="priceSend" type="hidden" name="priceSend" value="">
+            
+            <button class="cta" type="submit">
+                <span>Dodaj do koszyka</span>
+                <svg viewBox="0 0 13 10" height="10px" width="15px">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+            </button>
+
+
+        </form>
+    </div>
+
+    <script>
+     document.addEventListener('DOMContentLoaded', function() {
+    var originalPrice;
+    var cumulativePrice = 0;
+
+    var additionalPrices = {
+        'DOZOWNIK': 30,
+        'NISZCZARKA': 100,
+        'SZUFLADA': 150,
+        '190x70': 100,
+        '200x80': 200,
+    };
+
+    function updatePrice() {
+        var priceElement = document.getElementById('price');
+        var priceElementSend = document.getElementById('priceSend');
+        var priceText = priceElement.innerText;
+
+        if (typeof originalPrice === 'undefined') {
+            originalPrice = parseFloat(priceText.replace('Cena: ', '').replace(' zł', ''));
+        }
+
+        cumulativePrice = originalPrice;
+
+        document.querySelectorAll('form input[type="radio"]:checked').forEach(function(radio) {
+            var option = radio.value;
+            cumulativePrice += additionalPrices[option] || 0;
+        });
+
+        priceElement.innerText = 'Cena: ' + cumulativePrice.toLocaleString('pl-PL', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' zł'; 
+        priceElementSend.value = cumulativePrice;
+    }
+
+
+    document.querySelectorAll('form').forEach(function(form) {
+        form.addEventListener('change', function() {
+  
+            updatePrice();
+        });
+    });
+
+    function handleSubmit() {
+
+        return true; 
+    }
+});
+    </script>
+<script>
+    var closeButtons = document.querySelectorAll('.close-button');
+
+    closeButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            var alert = this.closest('.custom-alert');
+            if (alert) {
+                alert.style.display = 'none';
+            }
+        });
+    });
+</script>
+    {% endblock %}

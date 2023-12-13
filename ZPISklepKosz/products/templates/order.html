@@ -1,0 +1,164 @@
+{% extends 'navbar.html' %}
+{% load static %}
+
+
+{% block content %}
+<head>
+    <title>Zamówienie</title>
+    <link rel="stylesheet" href="{%static 'sklep.css'%}">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js"></script>
+</head>
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="custom-alert">
+        {{message}}
+        <button class="close-button" aria-label="Close">×</button>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+<h1 id="title">Szczegóły zamówienia</h1>
+        <div id="orderwindow">
+            <form action="\cart\">
+                <button class="cta" type="submit" id="model">
+                    <span>Powrót do koszyka</span>
+                    <svg viewBox="0 0 13 10" height="10px" width="15px">
+                        <path d="M1,5 L11,5"></path>
+                        <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                </button>
+            </form>
+
+            <p id="szczegoly">Wprowadź dane:</p>
+            <form method="POST" id="myForm">
+                {% csrf_token %}
+                <table id="ordertable">
+                    <tr>
+                        <td>Imię:</td>
+                        <td><input name="name" type="text" required class="pola"></td>
+                        <td>Nazwisko:</td>
+                        <td><input name="surname" type="text" required class="pola"></td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td><input name="email" type="text" required class="pola"></td>
+                        <td>Telefon:</td>
+                        <td><input name="telephone" type="text" required class="pola"></td>
+                    </tr>
+                    <tr>
+                        <td>Ulica:</td>
+                        <td><input name="street" type="text" required class="pola"></td>
+                        <td>Numer domu:</td>
+                        <td><input name="number" type="text" required class="pola"></td>
+                    </tr>
+                    <tr>
+                        <td>Kod pocztowy:</td>
+                        <td><input name="postcode" type="text" required class="pola"></td>
+                        <td>Miasto:</td>
+                        <td><input name="city" type="text" required class="pola"></td>
+                    </tr>
+                </table>
+
+
+                <p id="szczegoly2">Sposób dostarczenia zamówienia:</p>
+                
+                
+
+               
+                
+
+
+                <p id="tekst">
+                    Po złożeniu zamówienia dostaniesz maila z danymi do przelewu.
+                    Zamówienie zostanie anulowane po 3 dniach roboczych, jeśli opłata nie zostanie uiszczona.
+                </p>
+
+                <table id="ordertable">
+                    <tr>
+                        <td><input id="o1" type="radio" value="DPD" name="delivery" required></td>
+                        <td><label class="lbl" for="o1">Kurier DPD - 15zł</label></td>
+                    </tr>
+                    <tr>
+                        <td> <input id="o2" type="radio" value="OSOBISTY" name="delivery"></td>
+                        <td><label for="o2" class="lbl">Odbiór osobisty - 0zł</label></td>
+                    </tr>
+                </table>
+                <p id="price2">
+                    <input type="checkbox" name="checkbox" required>
+                    <label for="checkbox">Akceptuję regulamin. <a href="\regulamin\">Regulamin.</a></label>
+                </p>
+
+                <p id="priceShow">Cena: {{ total }}zł</p>
+                <input type="hidden" id="price" name="price" value="{{ total }}">
+
+                <input id="priceSend" type="hidden" name="priceSend" value="">
+                <button class="cta" type="submit" id="model">
+                    <span>Zamawiam</span>
+                    <svg viewBox="0 0 13 10" height="10px" width="15px">
+                        <path d="M1,5 L11,5"></path>
+                        <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('myForm');
+    
+            form.addEventListener('change', function() {
+                var radios = document.getElementsByName('delivery');
+                var selectedOption;
+    
+                for (var i = 0; i < radios.length; i++) {
+                    if (radios[i].checked) {
+                        selectedOption = radios[i].value;
+                        break;
+                    }
+                }
+    
+                updatePrice(selectedOption);
+            });
+    
+            function updatePrice(selectedOption) {
+                var priceSend = document.getElementById('priceSend');
+                var priceElementShow = document.getElementById('priceShow');
+                var priceText = document.getElementById('price').value;
+                priceText = priceText.replace(',', '.');
+                
+                if (typeof originalPrice === 'undefined') {
+                    originalPrice = parseFloat(priceText.replace('Kwota: ', '').replace(' zł', ''));
+                }
+    
+                var price;
+    
+                switch (selectedOption) {
+                    case 'DPD':
+                        price = originalPrice + 15; 
+                        break;
+                    case 'OSOBISTY':
+                        price = originalPrice; 
+                        break;
+                    default:
+                        price = originalPrice; 
+                }
+    
+                priceElementShow.innerText = 'Cena: ' + price.toLocaleString('pl-PL', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + 'zł'; 
+                priceSend.value = price
+            }
+        });
+    </script>
+<script>
+    var closeButtons = document.querySelectorAll('.close-button');
+
+    closeButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            var alert = this.closest('.custom-alert');
+            if (alert) {
+                alert.style.display = 'none'; 
+            }
+        });
+    });
+</script>
+{% endblock %}
+

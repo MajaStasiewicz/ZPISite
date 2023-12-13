@@ -1,0 +1,26 @@
+{% autoescape off %}
+Cześć{{ user.username }},
+oto szczegóły twojego zamówienia:
+{% for product in products %}
+    {{ product.product.color }}
+    {{ product.shredder }}
+    {{ product.water }}
+    {{ product.quantity }}
+    {{ product.size }}
+    {{ product.hand }}
+    {{ product.drawer }}
+    {{ product.height }}
+    {{ product.price }}
+{% endfor %}
+
+Imię: {{ order.name }}
+Nazwisko: {{ order.surname }}
+Telefon: {{ order.telephone }}
+Ulica: {{ order.street }}
+Numer: {{ order.number }}
+Miasto: {{ order.city }}
+Kod-pocztowy: {{ order.postcode }}
+Opcja doręczenia: {{ order.delivery_method }}
+
+Prosimy o przelew {{ totalPrice }}zł na numer NUMERKONTA.
+{% endautoescape %}
