@@ -1,0 +1,67 @@
+{% extends 'navbar.html' %}
+{% load static %}
+
+
+{% block content %}
+<head>
+    <title>Logowanie</title>
+    <link rel="stylesheet" href="{%static 'sklep.css'%}">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js"></script>
+</head>
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="custom-alert">
+        {{message}}
+        <button class="close-button" aria-label="Close">×</button>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+<h1 id="title">Logowanie</h1>
+<div id="logwindow">
+    <form method="POST" action="/logowanie/">
+        {% csrf_token %}
+
+        <img src="{%static 'logo.png'%}" id="logo2"><br />
+        <input name="username" type="text" placeholder="Podaj swój login." required class="pola">
+        <br />
+
+        <input name="password" type="password" placeholder="Podaj hasło." required class="pola">
+        <br>
+        <button class="cta" type="submit">
+            <span>Zaloguj się</span>
+            <svg viewBox="0 0 13 10" height="10px" width="15px">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+        </button>
+
+    </form>
+    <p><a href="/password_reset">Nie pamiętam hasła</a></p>
+    <p>Nie posiadasz konta?</p>
+
+    <form action="/rejestracja/">
+        <button class="cta" type="submit">
+            <span>Zarejestruj się</span>
+            <svg viewBox="0 0 13 10" height="10px" width="15px">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+        </button>
+    </form>
+</div>
+<script>
+    var closeButtons = document.querySelectorAll('.close-button');
+
+    closeButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            var alert = this.closest('.custom-alert');
+            if (alert) {
+                alert.style.display = 'none'; // Ukryj alert
+            }
+        });
+    });
+</script>
+
+{% endblock %}

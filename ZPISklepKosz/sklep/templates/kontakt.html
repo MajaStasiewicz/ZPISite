@@ -1,0 +1,62 @@
+{% extends 'navbar.html' %}
+{% load static %}
+
+
+{% block content %}
+<head>
+    <title>Kontakt</title>
+    <link rel="stylesheet" href="{%static 'sklep.css'%}">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<div class="container">
+    {% if messages %}
+        {% for message in messages %}
+        <div class="custom-alert">
+            {{message}}
+            <button class="close-button" aria-label="Close">×</button>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+        <h1 id="title">Kontakt</h1>
+        <div id="contactwindow">
+        <form method="POST">
+            {% csrf_token %}
+            <p>Skontaktuj się z nami!</p>
+            <input type="text" name="email" class="pola" placeholder="Twój adres e-mail">
+            <p>Treść wiadomości:</p>
+            <textarea id="myTextArea" rows="2" cols="10" name="body" maxlength="5000" required class="pola" placeholder="Twoja wiadomość"></textarea>
+            <br>
+            <button class="cta" type="submit">
+                <span>Wyślij wiadomość</span>
+                <svg viewBox="0 0 13 10" height="10px" width="15px">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+            </button>
+        </form>
+    </div>
+        <script>
+            $(document).ready(function() {
+                var textarea = $('#myTextArea');
+                
+                textarea.on('input', function () {
+                    this.style.height = 'auto'; 
+                    this.style.height = (this.scrollHeight) + 'px'; 
+                });
+            });
+        </script>
+<script>
+    var closeButtons = document.querySelectorAll('.close-button');
+
+    closeButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            var alert = this.closest('.custom-alert');
+            if (alert) {
+                alert.style.display = 'none'; 
+            }
+        });
+    });
+</script>
+{% endblock %}

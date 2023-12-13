@@ -1,0 +1,107 @@
+{% load static %}
+<!doctype html>
+<html>
+     <head>
+          <meta charset="UTF-8" />
+          
+          <link rel="stylesheet" href="{%static 'navbarANDfooter.css'%}">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <script src="https://kit.fontawesome.com/8b9d5972a2.js"></script>
+     </head>
+<body>
+     <header>
+          <div class="header-left">
+               <div class="logo">FOCzki <img src="{%static 'logo.png'%}" id="logo"></div>
+               <nav>
+                   <ul>
+                       <li><a class="navA" class="active" href="/home/">HOME</a></li>
+                       
+                       <li><a class="navA" href="/product/">PRODUKT</a></li>
+                       <li><a class="navA" href="/kontakt/">KONTAKT</a></li>
+                       <li><a class="navA" href="/aplikacja/">APLIKACJA</a></li>
+                       <li><a class="navA" href="/cart/">KOSZYK</a></li>
+
+                       {% if user.is_authenticated %}
+                       <li><a id="napis" class="navA" href="/konto/">MOJE KONTO</a></li>
+                       <li><a id="napis" class="navA" href="/wylogowanie/">WYLOGUJ SIĘ</a></li>
+                       {% else %}
+                       <li><a id="napis" class="navA" href="/logowanie/">LOGOWANIE</a></li>
+                       {% endif %}
+                   </ul>
+                    <div class="login-signup">
+                    </div>
+                </nav>
+           </div>
+            <div class="header-right">
+                <div class="login-signup">
+                </div>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </header>
+
+  <script>
+      hamburger = document.querySelector(".hamburger");
+      nav = document.querySelector("nav");
+      hamburger.onclick = function() {
+          nav.classList.toggle("active");
+      }
+  </script>
+
+<div class="containerItems">
+     <div class="content">
+         {% block content %}{% endblock content %}
+     </div>
+</div>
+
+<footer>
+    <div class="rowF">
+        <div class="colF">
+            <p id="ustawienie">
+                Future
+                <br />
+                Office
+                <br />
+                Creators
+            </p>
+        </div>
+        <div class="colF">
+            <h3>BIURO<div class="underline"></div></h3>
+            <p>
+                FoCzki<br />
+                Uniwersytet Kazimierza Wielkiego<br />
+                ul. Kopernika 1<br />
+                85-074 Bydgoszcz<br />
+                informatyka@ukw.edu.pl
+            </p>
+        </div>
+        <div class="colF">
+            <h3>POMOC<div class="underline"><span></span></div></h3>
+            <p class="pomoc">
+                <ul>
+                    <li><a class="pomocA" href="/home/">Home</a></li>
+                    
+                    <li><a class="pomocA" href="/regulamin/">Regulamin</a></li>
+                    <li><a class="pomocA" href="/platnosc/">Płatność oraz wysyłka</a></li>
+                    <li><a class="pomocA" href="/zwroty/">Zwroty</a></li>
+                </ul>
+            </p>
+        </div>
+        <div class="colF">
+            <h3>NEWSLETTER <div class="underline"><span></span></div></h3>
+            <form class="formNews" method="POST" action="/newsletter/">
+                {%csrf_token%}
+                <i class="far fa-envelope"></i>
+                <input type="email" class="email-id" placeholder="Wpisz swój adres e-mail" name="email" required>
+                <button type="submit"><i class="fas fa-arrow-right"></i></button>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <p class="copyright">2023 FoCzki</p>
+</footer>
+    </body>
+</html>

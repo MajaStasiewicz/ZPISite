@@ -1,0 +1,32 @@
+﻿{% extends 'navbar.html' %}
+{% load static %}
+
+
+{% block content %}
+<head>
+    <title>Zwroty</title>
+    <link rel="stylesheet" href="{%static 'sklep.css'%}">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js"></script>
+</head>
+        <p id="title">Zwroty</p>
+        <p id="tekst">
+            1. Prawo do Zwrotu:<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;Zgodnie z obowiązującymi przepisami, masz prawo do zwrotu zakupionego towaru w ciągu 14 dni od daty otrzymania przesyłki.
+            <br />
+            2. Procedura Zwrotów:<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;Aby dokonać zwrotu, skontaktuj się z naszym działem obsługi klienta pod adresem e-mail informatyka@ukw.edu.pl . Przygotujemy dla Ciebie niezbędne instrukcje i etykietę zwrotu.
+            <br />
+            3. Warunki Zwrotu:
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;Produkt musi być w nienaruszonym stanie.
+            Oryginalne opakowanie musi być w pełni zachowane.
+            Koszty przesyłki zwrotnej ponosi klient.
+            <br />
+            4. Zwrot Środków:<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;Po otrzymaniu zwracanego towaru i sprawdzeniu jego stanu, zwrócimy środki na Twoje konto zgodnie z wybraną formą płatności.
+            <br />
+            5. Wyjątki:<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;Niektóre produkty mogą podlegać ograniczeniom zwrotu ze względów higienicznych lub innych. Prosimy o zapoznanie się z naszymi warunkami zwrotów przed dokonaniem zakupu.
+        </p>
+
+{% endblock %}

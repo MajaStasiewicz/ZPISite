@@ -1,0 +1,1 @@
+<model-viewer src="Biurko.gltf" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="1" auto-rotate min-camera-orbit="auto 0deg auto" max-camera-orbit="auto 180deg auto" camera-orbit="517.8deg 177deg 3469m" field-of-view="30deg"> </model-viewer>

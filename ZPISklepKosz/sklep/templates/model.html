@@ -1,0 +1,17 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Model</title>
+    <meta charset="utf-8">
+    <meta name="description" content="&lt;model-viewer&gt; template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" href="{%static 'styles.css'%}" rel="stylesheet" />
+</head>
+<body>
+    <!-- <model-viewer> HTML element -->
+    <model-viewer src="{%static 'Biurko.gltf'%}" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="{%static 'poster.webp'%}" shadow-intensity="1" auto-rotate min-camera-orbit="auto 0deg auto" max-camera-orbit="auto 180deg auto" camera-orbit="402.6deg 176.1deg 3469m" field-of-view="30deg"> </model-viewer>
+    <!-- Loads <model-viewer> for browsers: -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.2.0/model-viewer.min.js"></script>
+</body>
+</html>

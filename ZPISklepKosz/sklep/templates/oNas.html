@@ -1,0 +1,197 @@
+﻿{% extends 'navbar.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{%static 'sklep.css'%}">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js"></script>
+</head>
+
+<p id="title">O nas</p>
+
+<div id="slider">
+    <input type="radio" name="slider" id="slide1" checked>
+    <input type="radio" name="slider" id="slide2">
+    <input type="radio" name="slider" id="slide3">
+    <input type="radio" name="slider" id="slide4">
+    <input type="radio" name="slider" id="slide5">
+    <input type="radio" name="slider" id="slide6">
+    <input type="radio" name="slider" id="slide7">
+    <div id="slides">
+        <div id="overflow">
+            <div class="inner">
+                <div class="slide slide_1">
+                    <div class="slide-content">
+                        <div class="pic"><img src="{%static 'JW.jpg'%}" id="JW" /></div>
+                        <div class="about">
+
+                            <h2>Jakub Witkowski</h2>
+                            <br>
+                            <p>
+                                Interesuje się siatkówką, swoją przyszłość
+                            </p>
+
+                            <p>
+                                wiąże z tworzeniem gier komputerowych.
+                            </p>
+
+                            <p>
+                                Nie gardzi dobrym serialem.
+                            </p>
+                            <p>
+                                Lider zespołu. Czujniki.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide slide_2">
+                    <div class="slide-content">
+                        <div class="pic"><img src="{%static 'MS.jpg'%}" id="MS" /></div>
+                        <div class="about">
+                            <h2>Maja Stasiewicz</h2>
+                            <br>
+                            <p>
+                                Lubi rozwijać się w wielu dziedzinach artystycznych.
+                            </p>
+
+                            <p>
+                                Swoją przyszłość wiąże z tworzeniem gier komputerowych.
+                            </p>
+                            <p>
+                                Frontend.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide slide_3">
+                    <div class="slide-content">
+                        <div class="pic"><img src="{%static 'MU.jpg'%}" id="MU" /></div>
+                        <div class="about">
+                            <h2>Mateusz Urban</h2>
+                            <br>
+                            <p>Rybak, informatyk, przyszły milioner.</p>
+                            <p>
+                                Frontend.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide slide_4">
+                    <div class="slide-content">
+                        <div class="pic"><img src="{%static 'biurko.png'%}" id="WB" /></div>
+                        <div class="about">
+                            <h2>Wojciech Błoński</h2>
+                            <br>
+                            <p>Malarz, tynkarz, akrobata.</p>
+                            <p>
+                                Stolarka. Projekt 3D.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide slide_5">
+                    <div class="slide-content">
+                        <div class="pic"><img src="{%static 'PR.jpg'%}" id="PR" /></div>
+                        <div class="about">
+                            <h2>Patryk Rocławski</h2>
+                            <br>
+                            <p>
+                                Interesuje się sieciami oraz montażem komputerów.
+                            </p>
+
+                            <p>
+                                W wolnym czasie lubi obejrzeć dobry film,
+                            </p>
+                            <p>
+                                grać na komputerze oraz rysować.
+                            </p>
+                            <p>
+                                Czujniki.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide slide_6">
+                    <div class="slide-content">
+                        <div class="pic"><img src="{%static 'RC.jpg'%}" id="RC" /></div>
+                        <div class="about">
+                            <h2>Radosław Cierpicki</h2>
+                            <br>
+                            <p>
+                                Lubi ASG, jego bronią jest replika snajperki Dragunova.
+                            </p>
+
+                            <p>
+                                Widzi głównie na jedno oko, więc idealnie pasuje.
+                            </p>
+
+                            <p>
+                                Jego planem na przyszłość jest stworzenie ala Jarvisa.
+                            </p>
+                            <p>
+                                Czujniki.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide slide_7">
+                    <div class="slide-content">
+                        <div class="pic"><img src="{%static 'JT.png'%}" id="JT" /></div>
+                        <div class="about">
+
+                            <h2>Jakub Tomczewski</h2>
+                            <br>
+                            <p>
+                                Prezez BKI (Bydgoski Klaster Informatyczny). 
+                            </p>
+
+                            <p>
+                                Opiekun.
+                            </p>
+
+                            <p>
+                               
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="controls">
+        <label for="slide1"></label>
+        <label for="slide2"></label>
+        <label for="slide3"></label>
+        <label for="slide4"></label>
+        <label for="slide5"></label>
+        <label for="slide6"></label>
+        <label for="slide7"></label>
+    </div>
+    <div id="bullets">
+        <label for="slide1"></label>
+        <label for="slide2"></label>
+        <label for="slide3"></label>
+        <label for="slide4"></label>
+        <label for="slide5"></label>
+        <label for="slide6"></label>
+        <label for="slide7"></label>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
